@@ -1,0 +1,30 @@
+
+Ouverture de l'écran
+
+nécéssité d'avoir un menu avec :
+= charger un pack
+= sauver un pack
+= editer un niveau du pack
+= printer un pack sur imprimante
+= quitter
+
+
+En parallèle, il faudrait à côté du menu afficher un contenu du pack...
+c'est 4x4 niveaux ==> 
+zzzz zzzz zzzz zzzz
+zzzz
+zzzz
+
+zzzz
+zzzz
+zzzz
+
+zzzz
+zzzz
+zzzz
+
+zzzz
+zzzz
+zzzz
+
+
