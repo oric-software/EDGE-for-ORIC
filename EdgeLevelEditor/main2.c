@@ -40,6 +40,7 @@ extern unsigned char Edgesize;
 extern unsigned char EdgeSX;
 extern unsigned char EdgeSY;
 
+
 unsigned char *currentEdge;
 unsigned char abx, aby,i,j,k;
 unsigned char tab;
@@ -54,6 +55,20 @@ extern unsigned char *zstring;
 unsigned char packstr[80];
 unsigned char titlestr[40];
 unsigned char puis2[8];
+
+void affiche_cube(unsigned char amask){
+	
+		curset(0,0,0);
+		fill(200,40,64);
+		memcpy(LabelPicture,(unsigned char*)0xa000,8000);
+		memcpy((unsigned char*) CachePicture,LabelPicture,8000);
+		PGS_initsprite();
+		PGS_cube(currentMap,amask);
+		PGS_refreshscr();
+		memcpy(LabelPicture,(unsigned char*)0xa000,8000);
+		memcpy((unsigned char*) CachePicture,LabelPicture,8000);
+
+}
 
 unsigned char gest_edit_level(){
 	zmask = 255;
@@ -70,6 +85,8 @@ unsigned char gest_edit_level(){
 		updatevars();
 		
 		PGS_putspriteref(2,3,abx,aby);
+		Edgetitleprint(21,currentMap);
+		
 		a=get();
 		if( a=='U' && slx >0 ){slx--;}
 		if( a=='H' && slx <7 ){slx++;}
@@ -107,6 +124,7 @@ unsigned char gest_edit_level(){
 			poke(0xbfb6-slz2,124);
 			poke(0xbfb6-slz,94);
 			affiche_cube(zmask);
+			Edgetitleprint(21,currentMap);
 		}
 		if( a=='C'  ){
 			
@@ -135,7 +153,7 @@ unsigned char gest_edit_level(){
 			cibley=edgey;
 			ciblez=edgez;
 			PGS_calculesprite(2);
-			PGS_putsprite(1,2,abx,aby);
+			PGS_putspriteref(1,2,abx,aby);
 			
 			Edgetitleprint(21,currentMap);
 		}
@@ -176,20 +194,6 @@ unsigned char gest_edit_title(){
 		a=get();
 	} while(a!='Y');
 	return 0;
-
-}
-
-void affiche_cube(amask){
-	
-		curset(0,0,0);
-		fill(200,40,64);
-		memcpy(LabelPicture,(unsigned char*)0xa000,8000);
-		memcpy((unsigned char*) CachePicture,LabelPicture,8000);
-		PGS_initsprite();
-		PGS_cube(currentMap,amask);
-		PGS_refreshscr();
-		memcpy(LabelPicture,(unsigned char*)0xa000,8000);
-		memcpy((unsigned char*) CachePicture,LabelPicture,8000);
 
 }
 
@@ -244,7 +248,7 @@ unsigned char gest_level_visu(){
 		if( a=='L' && currentMapX <3 ){currentMapX++;}
 		if( a=='K' && currentMapY >0 ){currentMapY--;}
 		if( a=='I' && currentMapY <3 ){currentMapY++;}
-		if( a=='E'  ){gest_edit_level();}
+		if( a=='E'  ){PGS_erasemask();gest_edit_level();}
 		if( a=='T'  ){gest_edit_title();}
 	} while( a!='S');
 	
@@ -252,15 +256,39 @@ unsigned char gest_level_visu(){
 }
 
 unsigned char print_pack(){
-	
-	printf("\n");
-	printf("       xxxxx                xxxxx\n            ");
-	lprintf("\n_EDGE");
+	unsigned char *ptr;
+	gotoxy(9,18);
+	printf("xxxxx                  xxxxx");
+	gotoxy(14,18);
+	lprintf("\n_EDGE\n");
+	lprintf(".dsb 256-(*&255)\n_EDGEBEGIN\n_Edgesize\n.byt 8\n\n_EdgeSX\n.byt 4\n\n_EdgeSY\n.byt 4\n\n_Edgestart\n");
+	ptr = Edgestart;
+	for(i=0;i<16;i++){
+		lprintf(".byt %d, %d, %d\n",*(ptr++),*(ptr++),*(ptr++));		
+	}
+	lprintf("\n_Edgecible\n");
+	for(i=0;i<16;i++){
+		lprintf(".byt %d, %d, %d\n",*(ptr++),*(ptr++),*(ptr++));		
+	}
+	lprintf("\n_Edgetitles\n");
+	printf("x");
+	for(i=0;i<16;i++){
+		lprintf("\nEdgetitle%d%d\n.byt ",((i&12)>>2)+1,(i&3)+1);
+		lprintf("%d",*(ptr++));
+		for(j=1;j<20;j++){
+			lprintf(", %d",*(ptr++));	
+		}
+	}
+	lprintf("\nEdgeMap\n.byt %d",*(ptr++));
+	for(j=1;j<6;j++){
+		lprintf(",%d",*(ptr++));	
+	}
+
+	printf("x");
 	for(i=0;i<16;i++){
 		lprintf("\nEdge%d%d\n",((i&12)>>2)+1,(i&3)+1);
 		for(j=0;j<8;j++){
-			lprintf(".byt ");
-			lprintf("%d",EDGE[i*64+j*8]);
+			lprintf(".byt %d",EDGE[i*64+j*8]);
 			for(k=1;k<8;k++){
 				lprintf(", %d",EDGE[i*64+j*8+k]);
 			}
@@ -269,6 +297,7 @@ unsigned char print_pack(){
 		printf("x");
 		
 	}
+	lprintf("_EDGEEND");
 	printf("\n  DONE...");
 	for(i=1;i<5;i++){
 		delai(126);
@@ -303,22 +332,9 @@ void main()
 			cls();
 			printf("\n\n     ARE YOU SURE ?");
 			a=get();
-			if(a=='O'){flagFin=0; }
+			if(a=='O' || a=='Y'){flagFin=0; }
 		}
-/*		if( a ==  '1' ) { 
-			printf("\n\nENTER PACK NAME:");
-			gets(packstr);
-			printf("\nWAITING FOR TAPE...");
-			cload(packstr);
-			printf("\nDONE...");
-		}
-		if( a ==  '2' ) {
-			printf("\n\nENTER PACK NAME:");
-			gets(packstr);
-			printf("\nRECORD ON TAPE THEN PRESS A KEY");
-			csave(packstr,EDGEBEGIN,EDGEEND);
-			printf("\nDONE...");
-		} */
+
 		if( a ==  '3' ) {
 			gest_level_visu();
 		}

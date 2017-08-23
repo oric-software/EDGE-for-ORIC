@@ -10,7 +10,7 @@ _EdgeSY
 .byt 4
 
 _Edgestart
-.byt 7,1,1
+.byt 6,6,7
 .byt 7,1,1
 .byt 7,1,1
 .byt 7,1,1
@@ -51,46 +51,6 @@ _Edgecible
 .byt 7,7,1
 .byt 7,7,1
 .byt 7,7,1
-
-
-EdgetitleAdressLow
-	.byt <(Edgetitle11)
-	.byt <(Edgetitle12)
-	.byt <(Edgetitle13)
-	.byt <(Edgetitle14)
-	.byt <(Edgetitle21)
-	.byt <(Edgetitle22)
-	.byt <(Edgetitle23)
-	.byt <(Edgetitle24)
-	.byt <(Edgetitle31)
-	.byt <(Edgetitle32)
-	.byt <(Edgetitle33)
-	.byt <(Edgetitle34)
-	.byt <(Edgetitle41)
-	.byt <(Edgetitle42)
-	.byt <(Edgetitle43)
-	.byt <(Edgetitle44)
-	.byt <(EdgeMap)
-           
-EdgetitleAdressHigh
-	.byt >(Edgetitle11)
-	.byt >(Edgetitle12)
-	.byt >(Edgetitle13)
-	.byt >(Edgetitle14)
-	.byt >(Edgetitle21)
-	.byt >(Edgetitle22)
-	.byt >(Edgetitle23)
-	.byt >(Edgetitle24)
-	.byt >(Edgetitle31)
-	.byt >(Edgetitle32)
-	.byt >(Edgetitle33)
-	.byt >(Edgetitle34)
-	.byt >(Edgetitle41)
-	.byt >(Edgetitle42)
-	.byt >(Edgetitle43)
-	.byt >(Edgetitle44)
-	.byt >(EdgeMap)
-	
 	
 _Edgetitles
 Edgetitle11
@@ -164,56 +124,28 @@ EdgeMap
 .byt 7
 .byt 0
 
-_EdgemapAdressLow
-	.byt <(Edge11)
-	.byt <(Edge12)
-	.byt <(Edge13)
-	.byt <(Edge14)
-	.byt <(Edge21)
-	.byt <(Edge22)
-	.byt <(Edge23)
-	.byt <(Edge24)
-	.byt <(Edge31)
-	.byt <(Edge32)
-	.byt <(Edge33)
-	.byt <(Edge34)
-	.byt <(Edge41)
-	.byt <(Edge42)
-	.byt <(Edge43)
-	.byt <(Edge44)
-           
-_EdgemapAdressHigh
-	.byt >(Edge11)
-	.byt >(Edge12)
-	.byt >(Edge13)
-	.byt >(Edge14)
-	.byt >(Edge21)
-	.byt >(Edge22)
-	.byt >(Edge23)
-	.byt >(Edge24)
-	.byt >(Edge31)
-	.byt >(Edge32)
-	.byt >(Edge33)
-	.byt >(Edge34)
-	.byt >(Edge41)
-	.byt >(Edge42)
-	.byt >(Edge43)
-	.byt >(Edge44)
-
-
 .dsb 256-(*&255)
-
 
 _EDGE
 Edge11 
-	.byt 0,1,0,0,0,0,0,0
-	.byt 0,0,0,0,0,0,0,0
-	.byt 0,0,1,0,0,0,0,0
-	.byt 0,0,0,0,0,0,0,0
-	.byt 0,0,0,0,0,0,0,0
-	.byt 0,0,0,0,1,0,0,0
-	.byt 0,0,0,0,0,0,0,0
-	.byt 0,1,0,0,0,0,0,1
+
+.byt 200, 200, 200, 200, 192, 192, 192, 255
+
+.byt 200, 64, 64, 72, 72, 76, 76, 255
+
+.byt 200, 64, 32, 32, 32, 34, 73, 227
+
+.byt 200, 72, 48, 24, 1, 32, 73, 195
+
+.byt 192, 72, 48, 25, 24, 32, 64, 241
+
+.byt 192, 78, 33, 33, 17, 33, 65, 249
+
+.byt 192, 78, 73, 8, 16, 64, 95, 120
+
+.byt 255, 255, 249, 249, 249, 249, 121, 121
+
+
 
 
 Edge12 
