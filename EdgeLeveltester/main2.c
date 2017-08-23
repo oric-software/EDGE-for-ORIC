@@ -87,8 +87,8 @@ void main()
 		updatevars();
 		PGS_initsprite();
 		PGS_cube(currentMap);
-		PGS_puttile(7,abx,aby);
-		PGS_refreshscr();
+		PGS_calculesprite(7);
+		PGS_putspriteref(0,7,abx,aby);
 		ciblex=edgex;
 		cibley=edgey;
 		ciblez=edgez;
@@ -108,7 +108,7 @@ void main()
 		updatevars();
 		flagM=0; flagS=0;
 		PGS_calculesprite(0);
-		PGS_putspriteref(127,0,abx,aby);
+		PGS_putspriteref(1,0,abx,aby);
 
 		PGS_updatemap();
 		
@@ -126,18 +126,18 @@ void main()
 						  && ( edgex == 0
 							  || testbit(currentEdge[tab-Edgesize], edgez ) == 0 )
 					){
-						PGS_putspriteref(127,1,abx,aby-4);delai(10);
-						PGS_putspriteref(127,2,abx,aby-7);animate();delai(10);
+						PGS_putspriteref(1,1,abx,aby-4);delai(10);
+						PGS_putspriteref(1,2,abx,aby-7);animate();delai(10);
 						edgez++;
 						updatevars();
 						PGS_calculesprite(0);
-						PGS_putspriteref(127,0,abx,aby);
+						PGS_putspriteref(1,0,abx,aby);
 					}
 					if ( testbit(currentEdge[tab+Edgesize], edgez   ) == 0
 					  && testbit(currentEdge[tab+Edgesize], edgez+1 ) == 0){
 						
-						PGS_putspriteref(127,1,abx-1,aby-2);delai(10);
-						PGS_putspriteref(127,2,abx-2,aby+4);animate();delai(10);
+						PGS_putspriteref(1,1,abx-1,aby-2);delai(10);
+						PGS_putspriteref(1,2,abx-2,aby+4);animate();delai(10);
 						edgex++; 
 					}
 
@@ -148,17 +148,17 @@ void main()
 						  && ( edgex == 7
 							  || testbit(currentEdge[tab+Edgesize], edgez   ) == 0 )
 					){
-						PGS_putspriteref(127,2,abx-1,aby-2);delai(10);
-						PGS_putspriteref(127,1,abx-1,aby-10);animate();delai(10);
+						PGS_putspriteref(1,2,abx-1,aby-2);delai(10);
+						PGS_putspriteref(1,1,abx-1,aby-10);animate();delai(10);
 						edgez++;
 						updatevars();
 						PGS_calculesprite(0);
-						PGS_putspriteref(127,0,abx,aby);
+						PGS_putspriteref(1,0,abx,aby);
 					}
 					if ( testbit(currentEdge[tab-Edgesize], edgez   ) == 0 
 					  && testbit(currentEdge[tab-Edgesize], edgez+1 ) == 0 ){
-						PGS_putspriteref(127,2,abx,aby-4);delai(10);
-						PGS_putspriteref(127,1,abx,aby-8);animate();delai(10);
+						PGS_putspriteref(1,2,abx,aby-4);delai(10);
+						PGS_putspriteref(1,1,abx,aby-8);animate();delai(10);
 						edgex--;
 					}
 				} else
@@ -168,17 +168,17 @@ void main()
 						  && ( edgey == 0
 							  || testbit(currentEdge[tab-1], edgez   ) == 0 )
 					){
-						PGS_putspriteref(127,3,abx-1,aby-4);delai(10);
-						PGS_putspriteref(127,4,abx-1,aby-7);animate();delai(10);
+						PGS_putspriteref(1,3,abx-1,aby-4);delai(10);
+						PGS_putspriteref(1,4,abx-1,aby-7);animate();delai(10);
 						edgez++;
 						updatevars();
 						PGS_calculesprite(0);
-						PGS_putspriteref(127,0,abx,aby);
+						PGS_putspriteref(1,0,abx,aby);
 					}
 					if ( testbit(currentEdge[tab+1], edgez   ) == 0 
 					  && testbit(currentEdge[tab+1], edgez+1 ) == 0 ){
-						PGS_putspriteref(127,3,abx,aby-2);delai(10);
-						PGS_putspriteref(127,4,abx+1,aby+2);animate();delai(10);
+						PGS_putspriteref(1,3,abx,aby-2);delai(10);
+						PGS_putspriteref(1,4,abx+1,aby+2);animate();delai(10);
 						edgey++; 
 					}
 				} else
@@ -188,26 +188,26 @@ void main()
 						  && ( edgey== 7
 							  || testbit(currentEdge[tab+1], edgez   ) == 0  )
 					){
-						PGS_putspriteref(127,4,abx,aby-2);delai(10);
-						PGS_putspriteref(127,3,abx,aby-10);animate();delai(10);
+						PGS_putspriteref(1,4,abx,aby-2);delai(10);
+						PGS_putspriteref(1,3,abx,aby-10);animate();delai(10);
 						edgez++;
 						updatevars();
-						PGS_putspriteref(127,0,abx,aby);
+						PGS_putspriteref(1,0,abx,aby);
 					}
 					if ( testbit(currentEdge[tab-1], edgez   ) == 0 
 					  && testbit(currentEdge[tab-1], edgez+1 ) == 0  ){
 						
-						PGS_putspriteref(127,4,abx-1,aby-4);delai(10);
-						PGS_putspriteref(127,3,abx-2,aby-8);animate();delai(10);
+						PGS_putspriteref(1,4,abx-1,aby-4);delai(10);
+						PGS_putspriteref(1,3,abx-2,aby-8);animate();delai(10);
 						edgey--; 
 					}
 				}
 				updatevars();
 				if( testbit(currentEdge[tab] , edgez-1 ) == 0 ){
 					do{
-						PGS_putspriteref(127,0,abx,aby);delai(10);
-						PGS_putspriteref(127,0,abx,aby+4);delai(10);
-						PGS_putspriteref(127,0,abx,aby+8);animate();delai(10);
+						PGS_putspriteref(1,0,abx,aby);delai(10);
+						PGS_putspriteref(1,0,abx,aby+4);delai(10);
+						PGS_putspriteref(1,0,abx,aby+8);animate();delai(10);
 						edgez--; 
 						updatevars();
 					} while(edgez > 0
@@ -217,7 +217,7 @@ void main()
 				animate();
 				delai(20);
 				PGS_calculesprite(0);
-				PGS_putspriteref(127,0,abx,aby);
+				PGS_putspriteref(1,0,abx,aby);
 
 				PGS_updatemap();
 			} else {
@@ -228,7 +228,7 @@ void main()
 		if(flagFin != 0) {
 			if(flagM==1){
 				PGS_calculesprite(0);
-				PGS_putspriteref(127,0,abx,aby);
+				PGS_putspriteref(1,0,abx,aby);
 				PGS_updatemap();
 				printf("\n\n\n    VICTOIRE   !!!\n",currentMapY,currentMapX);
 				printf("     NIVEAU %d - %d       !\n",currentMapY,currentMapX);
@@ -252,7 +252,7 @@ void main()
 					printf("\n\n\n    P L O U F  !\n",currentMapY,currentMapX);
 					do{
 						PGS_erasemask();
-						PGS_putspriteref(127,0,abx,aby);
+						PGS_putspriteref(1,0,abx,aby);
 						aby = aby+4;
 					} while( aby < 175 );
 				}
@@ -267,7 +267,7 @@ void main()
 				delai(dlais);
 			} while( key()==0 );
 			printf("\n\n\n\n");
-			PGS_erasprite(127);
+			PGS_erasprite(1);
 			PGS_refreshscr();
 		
 		}

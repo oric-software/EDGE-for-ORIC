@@ -646,6 +646,16 @@ suite7
 	adc #0					; Eventually add the carry to complete the 16 bits addition
 	sta PGS_SCWORK+1
 	
+	
+	ldy tmpTY
+	lda PictureAdressLow,y	; Get the LOW part of the screen adress
+	clc						; Clear the carry (because we will do an addition after)
+	adc tmpTX			; Add X coordinate
+	sta PGS_SCWA
+	lda PictureAdressHigh,y	; Get the HIGH part of the screen adress
+	adc #0					; Eventually add the carry to complete the 16 bits addition		
+	sta PGS_SCWA+1			
+
 ;; Identification des mémoires tampon du sprite x (stocké dans tmp)	
 
 	ldx numspr
@@ -681,6 +691,7 @@ pgetiq_boucleX2
 	and #63						;;			On ecrase un éventuel code genant		
 	adc #64
 	sta (PGS_SCWORK),y				;;			Mettre A dans le tampon
+	sta (PGS_SCWA),y	
 	
 	iny					;;			Ajouter 1 à Adresse Ecran
 	cpy tmpCL
@@ -698,6 +709,14 @@ pgetiq_boucleX2
 	lda PGS_SCWORK+1
 	adc #0
 	sta PGS_SCWORK+1
+	
+	clc
+	lda PGS_SCWA
+	adc #40
+	sta PGS_SCWA
+	lda PGS_SCWA+1
+	adc #0
+	sta PGS_SCWA+1
 	
 ;;  incrémenter aussi les compteurs de tmp
 	lda tmpCL

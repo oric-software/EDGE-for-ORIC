@@ -260,7 +260,6 @@ unsigned char print_pack(){
 	gotoxy(9,18);
 	printf("xxxxx                  xxxxx");
 	gotoxy(14,18);
-	lprintf("\n_EDGE\n");
 	lprintf(".dsb 256-(*&255)\n_EDGEBEGIN\n_Edgesize\n.byt 8\n\n_EdgeSX\n.byt 4\n\n_EdgeSY\n.byt 4\n\n_Edgestart\n");
 	ptr = Edgestart;
 	for(i=0;i<16;i++){
@@ -285,6 +284,7 @@ unsigned char print_pack(){
 	}
 
 	printf("x");
+	lprintf("\n.dsb 256-(*&255)\n_EDGE\n");
 	for(i=0;i<16;i++){
 		lprintf("\nEdge%d%d\n",((i&12)>>2)+1,(i&3)+1);
 		for(j=0;j<8;j++){
