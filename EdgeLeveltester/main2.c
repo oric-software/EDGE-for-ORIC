@@ -69,8 +69,8 @@ void main()
 	PGS_definechar();
 	a=0;
 	Edgesize = 8;
-	currentMapX = 0;
-	currentMapY = 0;
+	currentMapX = 2;
+	currentMapY = 1;
 	
 	do {
 		curset(0,0,0);
