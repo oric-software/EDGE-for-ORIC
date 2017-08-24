@@ -11,7 +11,6 @@ IF "%OSDK%"=="" GOTO ErCfg
 ::
 :: Set the build paremeters
 ::
-CALL osdk_config.bat
 
 
 copy ..\..\Oricutron\printer_out.txt Edgemap.s 
