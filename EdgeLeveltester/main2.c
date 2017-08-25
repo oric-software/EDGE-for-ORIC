@@ -70,7 +70,7 @@ void main()
 	a=0;
 	Edgesize = 8;
 	currentMapX = 2;
-	currentMapY = 1;
+	currentMapY = 2;
 	
 	do {
 		curset(0,0,0);
