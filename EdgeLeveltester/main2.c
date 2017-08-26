@@ -69,7 +69,7 @@ void main()
 	PGS_definechar();
 	a=0;
 	Edgesize = 8;
-	currentMapX = 1;
+	currentMapX = 3;
 	currentMapY = 2;
 	
 	do {
