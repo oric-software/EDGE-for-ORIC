@@ -73,7 +73,7 @@ void affiche_cube(unsigned char amask){
 unsigned char gest_edit_level(){
 	zmask = 255;
 	build_zstring();
-	printf("\n\n\nLEVEL %d - %d -     (Z)MASK :  %s\nMOVE : HURF -(C)UBE (T)ARGET \n(B)KGND (D)ELETE (", currentMapY,currentMapX,&zstring);
+	printf("\n\n\nLEVEL %d - %d -     (Z)MASK :  %s\nMOVE : HURF -(C)UBE (T)ARGET \n(B)KGND (D)ELETE", currentMapY,currentMapX,&zstring);
 	slx=7;sly=7;slz=7;slz2=0;
 	
 	poke(0xbfb6-slz2,124);
