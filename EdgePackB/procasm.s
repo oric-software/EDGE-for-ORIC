@@ -1,3 +1,8 @@
+#define 	x0  #22
+#define 	y0  #90
+#define 	dx2  #2
+#define 	dy1 #12
+#define 	dy2  #6
 
 _updatevars
 .(
@@ -14,14 +19,14 @@ _updatevars
 	sbc op2+1
 	sta op2+1
 	
-	lda _dx2
+	lda dx2
 	sta op1 
 	lda #0 
 	sta op1+1
 	jsr mul16i 
 	stx tmp1 
 	sec 
-	lda _x0 
+	lda x0 
 	sbc tmp1 
 	sta _abx 
 
@@ -32,7 +37,7 @@ _updatevars
 	adc _edgey 
 	sta op2 
 
-	lda _dy2 
+	lda dy2 
 	sta op1 
 	lda #0 
 	sta op1+1 
@@ -41,13 +46,13 @@ _updatevars
 	stx tmp1 
 
 	clc 
-	lda _y0 
+	lda y0 
 	adc tmp1 
 	sta tmp0 
 
 	lda _edgez 
 	sta op1 
-	lda _dy1 
+	lda dy1 
 	sta op2 
 	lda #0 
 	sta op1+1 

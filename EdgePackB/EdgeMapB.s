@@ -162,10 +162,7 @@ Edgetitle44
 
 EdgeMap
 
-.byt 6
-.asc "(G)PS"
-.byt 7
-.byt 0
+.byt 6,71,80,83,7,0
 
 .dsb 256-(*&255)
 

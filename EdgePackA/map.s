@@ -66,8 +66,7 @@ addedge
 	lda #>PATTERN
 	sta tmp2+1
 	
-	asl tmp1
-	ldx #7			; on boucle sur l axe z
+	ldx #8			; on boucle sur l axe z
 
 boucle1
 	asl tmp1

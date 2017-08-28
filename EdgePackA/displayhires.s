@@ -214,72 +214,6 @@ ScreenAdressLow
 	.byt <(DISPLAY_ADRESS+40*198)
 	.byt <(DISPLAY_ADRESS+40*199)
 	
-; -- Patterns for MAP 
-PATTERN
-pattern8
-.byt 63+64
-.byt 63+64
-.byt 63+64
-.byt 63+64
-.byt 63+64
-.byt 63+64
-pattern7
-.byt 31+64
-.byt 55+64
-.byt 61+64
-.byt 31+64
-.byt 55+64
-.byt 61+64
-pattern6
-.byt 29+64
-.byt 55+64
-.byt 29+64
-.byt 55+64
-.byt 29+64
-.byt 55+64
-pattern5
-.byt 12+64
-.byt 55+64
-.byt 29+64
-.byt 51+64
-.byt 12+64
-.byt 55+64
-pattern4
-.byt 51+64
-.byt 12+64
-.byt 51+64
-.byt 12+64
-.byt 51+64
-.byt 12+64
-pattern3
-.byt 34+64
-.byt 8 +64
-.byt 34+64
-.byt 8 +64
-.byt 34+64
-.byt 8 +64
-pattern2
-.byt 32+64
-.byt 8 +64
-.byt 2 +64
-.byt 32+64
-.byt 8 +64
-.byt 2 +64
-pattern1
-.byt 0 +64
-.byt 0 +64
-.byt 0 +64
-.byt 0 +64
-.byt 0 +64
-.byt 0 +64
-patterncible
-.byt 0 +64
-.byt 30 +64
-.byt 18 +64
-.byt 18 +64
-.byt 30 +64
-.byt 0 +64
-
 .dsb 256-(*&255)
 
 ; This table contains hight 8 bits of the adress
@@ -485,6 +419,79 @@ ScreenAdressHigh
 	.byt >(DISPLAY_ADRESS+40*198)
 	.byt >(DISPLAY_ADRESS+40*199)
 
+
+; -- Patterns for MAP 
+PATTERN
+pattern9
+.byt 63+64
+.byt 63+64
+.byt 63+64
+.byt 63+64
+.byt 63+64
+.byt 63+64
+pattern8
+.byt 63+64
+.byt 63+64
+.byt 63+64
+.byt 63+64
+.byt 63+64
+.byt 63+64
+pattern7
+.byt 31+64
+.byt 55+64
+.byt 61+64
+.byt 31+64
+.byt 55+64
+.byt 61+64
+pattern6
+.byt 29+64
+.byt 55+64
+.byt 29+64
+.byt 55+64
+.byt 29+64
+.byt 55+64
+pattern5
+.byt 12+64
+.byt 55+64
+.byt 29+64
+.byt 51+64
+.byt 12+64
+.byt 55+64
+pattern4
+.byt 51+64
+.byt 12+64
+.byt 51+64
+.byt 12+64
+.byt 51+64
+.byt 12+64
+pattern3
+.byt 34+64
+.byt 8 +64
+.byt 34+64
+.byt 8 +64
+.byt 34+64
+.byt 8 +64
+pattern2
+.byt 32+64
+.byt 8 +64
+.byt 2 +64
+.byt 32+64
+.byt 8 +64
+.byt 2 +64
+pattern1
+.byt 0 +64
+.byt 0 +64
+.byt 0 +64
+.byt 0 +64
+.byt 0 +64
+.byt 0 +64
+patterncible
+.byt 0 +64
+.byt 30 +64
+.byt 18 +64
+.byt 18 +64
+.byt 30 +64
+.byt 0 +64
 
 
 
