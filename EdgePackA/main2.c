@@ -147,7 +147,7 @@ void main()
 			nbcoups++;
 			if( a != 0 ){
 				if(a==  'Q' || a=='A') { flagFin=0; }
-				if(a==  'C' ) { flagFin=0; }
+				if(a==  'S' ) { flagS=1; }
 				if(a==  'G' ) { flagMap=255; }
 				if(a==  'H'  && edgex<Edgesize-1 ) {
 					if( edgez < 7 
