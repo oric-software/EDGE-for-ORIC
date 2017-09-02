@@ -132,10 +132,10 @@ repeatGame:
 			edgez=Edgestart[tmpw+2];
 			updatevars();
 			flagM=0; flagS=0;
+			flagMap=0;
 			if(score>2000)
 			{
 				score=score-nbcoups-flagMap;
-				flagMap=0;
 			}
 			nbcoups=0;
 			PGS_calculesprite(0);
